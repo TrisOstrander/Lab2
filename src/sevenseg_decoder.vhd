@@ -49,7 +49,7 @@ with i_Hex select
                "0000010" when x"6",
                "1111000" when x"7",
                "0000000" when x"8",
-               "0010000" when x"9",
+               "0011000" when x"9",
                "0001000" when x"A",
                "0000011" when x"b",
                "0110011" when x"C",

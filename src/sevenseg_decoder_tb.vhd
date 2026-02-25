@@ -55,13 +55,13 @@ begin
     w_HEX <= x"8"; wait for 10 ns;                                         
         assert (w_seg = "0000000") report "bad 8 value" severity failure; 
     w_HEX <= x"9"; wait for 10 ns;                                         
-        assert (w_seg = "0010000") report "bad 9 value" severity failure; 
+        assert (w_seg = "0011000") report "bad 9 value" severity failure; 
     w_HEX <= x"A"; wait for 10 ns;                                         
         assert (w_seg = "0001000") report "bad A value" severity failure; 
     w_HEX <= x"B"; wait for 10 ns;                                         
         assert (w_seg = "0000011") report "bad B value" severity failure; 
     w_HEX <= x"C"; wait for 10 ns;                                         
-        assert (w_seg = "1000110") report "bad C value" severity failure; 
+        assert (w_seg = "0110011") report "bad C value" severity failure; 
     w_HEX <= x"D"; wait for 10 ns;                                         
         assert (w_seg = "0100001") report "bad D value" severity failure; 
     w_HEX <= x"E"; wait for 10 ns;                                         
