@@ -62,7 +62,7 @@ library ieee;
 entity top_basys3 is
 	port(
 		-- 7-segment display segments (cathodes CG ... CA)
-		seg		:	out std_logic_vector(0 to 6);  -- seg(6) = CG, seg(0) = CA
+		seg		:	out std_logic_vector(6 downto 0);  -- seg(6) = CG, seg(0) = CA
 
 		-- 7-segment display active-low enables (anodes)
 		an      :	out std_logic_vector(3 downto 0);
@@ -81,7 +81,7 @@ architecture top_basys3_arch of top_basys3 is
   -- declare the component of your top-level design
   component sevenseg_decoder is
   Port (i_HEX : in std_logic_vector(3 downto 0);
-        o_seg_n : out std_logic_vector(0 to 6)
+        o_seg_n : out std_logic_vector(6 downto 0)
         );
     end component sevenseg_decoder;
     signal w_7SD_EN_n : std_logic;
