@@ -62,7 +62,7 @@ library ieee;
 entity top_basys3 is
 	port(
 		-- 7-segment display segments (cathodes CG ... CA)
-		seg		:	out std_logic_vector(6 downto 0);  -- seg(6) = CG, seg(0) = CA
+		seg		:	out std_logic_vector(0 to 6);  -- seg(6) = CG, seg(0) = CA
 
 		-- 7-segment display active-low enables (anodes)
 		an      :	out std_logic_vector(3 downto 0);
@@ -79,17 +79,24 @@ end top_basys3;
 architecture top_basys3_arch of top_basys3 is 
 	
   -- declare the component of your top-level design
-
-
+  component sevenseg_decoder is
+  Port (i_HEX : in std_logic_vector(3 downto 0);
+        o_seg_n : out std_logic_vector(0 to 6)
+        );
+    end component sevenseg_decoder;
+    signal w_7SD_EN_n : std_logic;
   -- create wire to connect button to 7SD enable (active-low)
-
-  
 begin
-	-- PORT MAPS ----------------------------------------
+	-- PORT MAP    S ----------------------------------------
 
 	--	Port map: wire your component up to the switches and seven-segment display cathodes
 	-----------------------------------------------------	
-	
+	sevenseg_decoder_uut : sevenseg_decoder port map(
+	   i_HEX    => sw,
+	   o_seg_n    => seg
+	);
+	w_7SD_EN_n  <= not btnC;
+	an  <= (0 => w_7SD_EN_n, others => '1');
 	
 	-- CONCURRENT STATEMENTS ----------------------------
 	
